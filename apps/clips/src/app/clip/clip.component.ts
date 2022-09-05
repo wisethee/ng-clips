@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'ng-clips-clip',
@@ -11,6 +11,8 @@ export class ClipComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.params['id'];
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.id = params['id'];
+    });
   }
 }
