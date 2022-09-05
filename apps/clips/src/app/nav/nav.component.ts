@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { ModalService } from '../services/modal.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent {
-  constructor(public modalService: ModalService) {}
+  constructor(
+    public modalService: ModalService,
+    public authService: AuthService
+  ) {}
 
   openModal() {
     this.modalService.toggleModal('auth');
