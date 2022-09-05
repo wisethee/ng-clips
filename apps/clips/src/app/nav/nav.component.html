@@ -2,9 +2,7 @@
 <header id="header" class="bg-secondary">
   <nav class="container mx-auto flex justify-start items-center py-8 px-4">
     <!-- App Name -->
-    <a
-      class="text-3xl text-indigo-400 font-bold uppercase mr-4"
-      href="index.html"
+    <a class="text-3xl text-indigo-400 font-bold uppercase mr-4" routerLink="/"
       >Clips</a
     >
 
@@ -13,10 +11,22 @@
       <ul class="flex flex-row mt-1">
         <!-- Navigation Links -->
         <li>
-          <a class="px-4" href="#">Home</a>
+          <a
+            class="px-4"
+            routerLink="/"
+            routerLinkActive="text-indigo-400"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
         </li>
         <li>
-          <a class="pr-12" href="#">About</a>
+          <a
+            class="pr-12"
+            routerLink="/about"
+            routerLinkActive="text-indigo-400"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >About</a
+          >
         </li>
 
         <li
@@ -30,13 +40,28 @@
 
         <ng-template #authLinks>
           <li>
-            <a class="px-2" href="#">Manage</a>
+            <a
+              class="px-2"
+              routerLinkActive="text-indigo-400"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Manage</a
+            >
           </li>
           <li>
-            <a class="px-2" href="#">Upload</a>
+            <a
+              class="px-2"
+              routerLinkActive="text-indigo-400"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Upload</a
+            >
           </li>
           <li>
-            <a class="px-2" href="#" (click)="logout()">Sign out</a>
+            <a
+              class="px-2"
+              routerLinkActive="text-indigo-400"
+              (click)="logout()"
+              >Sign out</a
+            >
           </li>
         </ng-template>
       </ul>
