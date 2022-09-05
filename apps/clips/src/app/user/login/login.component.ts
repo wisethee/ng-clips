@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ng-clips-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  constructor() {}
+export class LoginComponent {
+  credentials = {
+    email: '',
+    password: '',
+  };
 
-  ngOnInit(): void {}
+  login() {
+    console.log(this.credentials);
+  }
 }
