@@ -263,4 +263,6 @@
     </a>
   </div>
 </section>
-<ng-clips-auth-modal></ng-clips-auth-modal>
+<ng-clips-auth-modal
+  *ngIf="(authService.isAuthenticated$ | async) !== true"
+></ng-clips-auth-modal>
