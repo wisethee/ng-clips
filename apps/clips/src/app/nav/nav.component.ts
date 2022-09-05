@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from '../services/auth.service';
 import { ModalService } from '../services/modal.service';
 
@@ -11,8 +10,7 @@ import { ModalService } from '../services/modal.service';
 export class NavComponent {
   constructor(
     public modalService: ModalService,
-    public authService: AuthService,
-    private afAuth: AngularFireAuth
+    public authService: AuthService
   ) {}
 
   openModal() {
@@ -21,8 +19,8 @@ export class NavComponent {
     return false;
   }
 
-  async logout() {
-    await this.afAuth.signOut();
+  logout() {
+    this.authService.logout();
     return false;
   }
 }

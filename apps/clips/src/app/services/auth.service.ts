@@ -4,6 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import IUser from '../models/user.model';
@@ -18,7 +19,11 @@ export class AuthService {
     delay(1000)
   );
 
-  constructor(private auth: AngularFireAuth, private db: AngularFirestore) {
+  constructor(
+    private auth: AngularFireAuth,
+    private db: AngularFirestore,
+    private router: Router
+  ) {
     this.usersCollection = db.collection('users');
   }
 
@@ -47,5 +52,10 @@ export class AuthService {
     await userCred.user.updateProfile({
       displayName: name,
     });
+  }
+
+  async logout() {
+    await this.auth.signOut();
+    await this.router.navigateByUrl('/');
   }
 }
