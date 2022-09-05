@@ -29,4 +29,7 @@
     You are {{control.errors?.['min']['actual']}} years old. You need to be 18
     years or over to register.
   </p>
+  <p *ngIf="control.errors?.['noMatch']" class="text-red-400">
+    Passwords do not match!
+  </p>
 </ng-container>
