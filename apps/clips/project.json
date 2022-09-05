@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/clips",
         "index": "apps/clips/src/index.html",
@@ -13,8 +15,13 @@
         "polyfills": "apps/clips/src/polyfills.ts",
         "tsConfig": "apps/clips/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/clips/src/favicon.ico", "apps/clips/src/assets"],
-        "styles": ["apps/clips/src/styles.scss"],
+        "assets": [
+          "apps/clips/src/favicon.ico",
+          "apps/clips/src/assets"
+        ],
+        "styles": [
+          "apps/clips/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -71,15 +78,30 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/clips/**/*.ts", "apps/clips/**/*.html"]
+        "lintFilePatterns": [
+          "apps/clips/**/*.ts",
+          "apps/clips/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/clips"],
+      "outputs": [
+        "coverage/apps/clips"
+      ],
       "options": {
         "jestConfig": "apps/clips/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "prerender": false,
+        "ssr": false,
+        "browserTarget": "clips:build:production",
+        "firebaseProject": "ng-clips-6668b",
+        "firebaseHostingSite": "ng-clips-6668b"
       }
     }
   },

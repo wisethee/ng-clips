@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-clips-6668b": {
+      "hosting": {
+        "clips": [
+          "ng-clips-6668b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-clips-6668b"
+  }
+}
