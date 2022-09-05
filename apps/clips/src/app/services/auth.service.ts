@@ -15,7 +15,7 @@ export class AuthService {
   private usersCollection: AngularFirestoreCollection<IUser>;
   public isAuthenticated$: Observable<boolean> = this.auth.user.pipe(
     map((user) => !!user),
-    delay(1800)
+    delay(1000)
   );
 
   constructor(private auth: AngularFireAuth, private db: AngularFirestore) {
