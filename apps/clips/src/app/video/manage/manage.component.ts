@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { idTokenResult } from '@angular/fire/compat/auth-guard';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import IClip from '../../models/clip.model';
 import { ClipService } from '../../services/clip.service';
 import { ModalService } from '../../services/modal.service';
+
+type IParams = {
+  sort: string;
+};
 
 @Component({
   selector: 'ng-clips-manage',
@@ -15,6 +19,8 @@ export class ManageComponent implements OnInit {
   clips: IClip[] = [];
   activeClip: IClip | null = null;
 
+  sort$: BehaviorSubject<string> = new BehaviorSubject(this.videoOrder);
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -23,11 +29,12 @@ export class ManageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.queryParamMap.subscribe((params: Params) => {
-      this.videoOrder = params['sort'] === 2 ? params['sort'] : 1;
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.videoOrder = params['sort'] === '2' ? params['sort'] : '1';
+      this.sort$.next(this.videoOrder);
     });
 
-    this.clipService.getUserClips().subscribe((docs) => {
+    this.clipService.getUserClips(this.sort$).subscribe((docs) => {
       this.clips = [];
       docs.forEach((doc) => this.clips.push({ docId: doc.id, ...doc.data() }));
     });
