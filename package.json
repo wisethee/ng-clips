@@ -48,6 +48,7 @@
     "@nrwl/jest": "14.6.4",
     "@nrwl/linter": "14.6.4",
     "@nrwl/workspace": "14.6.4",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/jest": "28.1.1",
     "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "~5.33.1",
