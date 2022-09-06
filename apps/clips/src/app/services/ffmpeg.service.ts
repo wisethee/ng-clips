@@ -28,6 +28,7 @@ export class FfmpegService {
 
     const seconds = [3, 6, 9];
     const commands: string[] = [];
+    const screenshots: string[] = [];
 
     seconds.forEach((second, index) => {
       commands.push(
@@ -44,5 +45,20 @@ export class FfmpegService {
     });
 
     await this.ffmpeg.run(...commands);
+
+    seconds.forEach((second, index) => {
+      const screenshotFile = this.ffmpeg.FS(
+        'readFile',
+        `output_0${index + 1}.png`
+      );
+      const screenshotBlob = new Blob([screenshotFile.buffer], {
+        type: 'image/png',
+      });
+      const screenshotUrl = URL.createObjectURL(screenshotBlob);
+
+      screenshots.push(screenshotUrl);
+    });
+
+    return screenshots;
   }
 }
