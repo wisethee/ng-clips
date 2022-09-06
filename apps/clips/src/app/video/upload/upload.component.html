@@ -23,7 +23,7 @@
     <ng-template #uploadFormContainer>
       <ng-clips-alert *ngIf="showAlert" [color]="alertColor">
         <p>{{ alertMessage }}</p>
-        <p>{{ percentage | percent }}</p>
+        <p *ngIf="showPercentage">{{ percentage | percent }}</p>
       </ng-clips-alert>
       <div>
         <!-- Form -->
