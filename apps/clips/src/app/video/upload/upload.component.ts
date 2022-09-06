@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ng-clips-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.scss'],
 })
-export class UploadComponent implements OnInit {
-  constructor() {}
+export class UploadComponent {
+  isDragover = false;
 
-  ngOnInit(): void {}
+  storeFile(event: Event) {
+    this.isDragover = false;
+  }
 }
