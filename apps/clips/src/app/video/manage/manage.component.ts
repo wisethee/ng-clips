@@ -3,6 +3,7 @@ import { idTokenResult } from '@angular/fire/compat/auth-guard';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import IClip from '../../models/clip.model';
 import { ClipService } from '../../services/clip.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'ng-clips-manage',
@@ -12,11 +13,13 @@ import { ClipService } from '../../services/clip.service';
 export class ManageComponent implements OnInit {
   videoOrder = '1';
   clips: IClip[] = [];
+  activeClip: IClip | null = null;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private clipService: ClipService
+    private clipService: ClipService,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -39,5 +42,13 @@ export class ManageComponent implements OnInit {
         sort: value,
       },
     });
+  }
+
+  openModal(event: Event, clip: IClip) {
+    event.preventDefault();
+
+    this.activeClip = clip;
+
+    this.modalService.toggleModal('editClip');
   }
 }
