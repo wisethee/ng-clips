@@ -34,6 +34,8 @@ export class UploadComponent implements OnDestroy {
 
   task?: AngularFireUploadTask;
 
+  screenshots: string[] = [];
+
   title = new FormControl('', {
     validators: [Validators.required, Validators.minLength(3)],
     nonNullable: true,
@@ -69,7 +71,7 @@ export class UploadComponent implements OnDestroy {
       return;
     }
 
-    await this.ffmpegService.getScreenshots(this.file);
+    this.screenshots = await this.ffmpegService.getScreenshots(this.file);
 
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
 
