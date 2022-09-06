@@ -5,10 +5,6 @@ import IClip from '../../models/clip.model';
 import { ClipService } from '../../services/clip.service';
 import { ModalService } from '../../services/modal.service';
 
-type IParams = {
-  sort: string;
-};
-
 @Component({
   selector: 'ng-clips-manage',
   templateUrl: './manage.component.html',
