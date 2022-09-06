@@ -7,8 +7,9 @@ import {
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { last, switchMap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
-import firebase from 'firebase/compat';
+import firebase from 'firebase/compat/app';
 import { ClipService } from '../../services/clip.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ng-clips-upload',
@@ -44,7 +45,8 @@ export class UploadComponent implements OnDestroy {
   constructor(
     private storage: AngularFireStorage,
     private auth: AngularFireAuth,
-    private clipService: ClipService
+    private clipService: ClipService,
+    private router: Router
   ) {
     auth.user.subscribe((user) => (this.user = user));
   }
@@ -74,7 +76,8 @@ export class UploadComponent implements OnDestroy {
 
     this.showAlert = true;
     this.alertColor = 'blue';
-    this.alertMessage = 'Please wait! Your clip is being uploaded.';
+    this.alertMessage =
+      'Please wait! Your clip is being uploaded. You will be redirected...';
     this.inSubmission = true;
     this.showPercentage = true;
 
@@ -95,20 +98,26 @@ export class UploadComponent implements OnDestroy {
         switchMap(() => clipRef.getDownloadURL())
       )
       .subscribe({
-        next: (url) => {
+        next: async (url) => {
           const clip = {
             uid: this.user?.uid as string,
             displayName: this.user?.displayName as string,
             title: this.title.value,
             fileName: `${clipFileName}.mp4`,
             url,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           };
 
-          this.clipService.createClip(clip);
+          const clipDocumentRef = await this.clipService.createClip(clip);
 
           this.alertColor = 'green';
           this.alertMessage = 'Success!, Your clip is uploaded.';
           this.showPercentage = false;
+
+          setTimeout(
+            () => this.router.navigate(['clip', clipDocumentRef.id]),
+            1000
+          );
         },
         error: (error) => {
           this.uploadForm.enable();
