@@ -13,6 +13,17 @@
         "polyfills": "apps/clips/src/polyfills.ts",
         "tsConfig": "apps/clips/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "allowedCommonJsDependencies": [
+          "@videojs/xhr",
+          "videojs-vtt.js",
+          "@ffmpeg/ffmpeg",
+          "keycode",
+          "mux.js/lib/tools/parse-sidx",
+          "mux.js/lib/utils/clock",
+          "safe-json-parse/tuple",
+          "global/document",
+          "global/window"
+        ],
         "assets": [
           "apps/clips/src/favicon.ico",
           "apps/clips/src/assets",
