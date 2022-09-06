@@ -48,7 +48,6 @@ export class ManageComponent implements OnInit {
     event.preventDefault();
 
     this.activeClip = clip;
-
     this.modalService.toggleModal('editClip');
   }
 
@@ -56,6 +55,17 @@ export class ManageComponent implements OnInit {
     this.clips.forEach((element, index) => {
       if (element.docId === event.docId) {
         this.clips[index].title = event.title;
+      }
+    });
+  }
+
+  deleteClip(event: Event, clip: IClip) {
+    event.preventDefault();
+    this.clipService.deleteClip(clip);
+
+    this.clips.forEach((element, index) => {
+      if (element.docId === clip.docId) {
+        this.clips.splice(index, 1);
       }
     });
   }
