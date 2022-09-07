@@ -34,7 +34,7 @@
         *ngIf="(authService.isAuthenticated$ | async) !== true; else authLinks"
       >
         <a
-          class="font-bold uppercase tracking-[.1rem] text-sm px-6 py-3 bg-slate-700 rounded-xl"
+          class="font-bold uppercase tracking-[.1rem] text-sm px-6 py-3 bg-slate-800 rounded-xl"
           href="#"
           (click)="openModal()"
           >Login / Register</a
@@ -63,7 +63,7 @@
         </li>
         <li>
           <a
-            class="font-bold uppercase tracking-[.1rem] text-sm px-6 py-3 bg-slate-700 rounded-xl cursor-pointer"
+            class="font-bold uppercase tracking-[.1rem] text-sm px-6 py-3 bg-slate-800 rounded-xl cursor-pointer"
             routerLinkActive="text-indigo-400"
             (click)="logout()"
             >Sign out</a

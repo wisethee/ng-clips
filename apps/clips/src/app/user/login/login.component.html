@@ -5,13 +5,16 @@
 <form #loginForm="ngForm" (ngSubmit)="login()">
   <!-- Email -->
   <div class="mb-3">
-    <label class="inline-block mb-2">Email</label>
+    <label
+      class="inline-block mb-2 text-xs uppercase tracking-[.1rem] font-bold text-slate-400"
+      >Email</label
+    >
     <input
       [(ngModel)]="credentials.email"
       #email="ngModel"
       name="email"
       type="email"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      class="block w-full py-1.5 px-3 text-slate-400 border border-slate-600 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Enter Email"
       required
       pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
@@ -26,13 +29,16 @@
   <!-- Password -->
 
   <div class="mb-3">
-    <label class="inline-block mb-2">Password</label>
+    <label
+      class="inline-block mb-2 text-xs uppercase tracking-[.1rem] font-bold text-slate-400"
+      >Password</label
+    >
     <input
       [(ngModel)]="credentials.password"
       #password="ngModel"
       name="password"
       type="password"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      class="block w-full py-1.5 px-3 text-slate-400 border border-slate-600 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Password"
       required
     />
@@ -46,7 +52,7 @@
   <button
     [disabled]="loginForm.invalid || inSubmission"
     type="submit"
-    class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500 disabled:opacity-30 disabled:bg-indigo-500"
+    class="block w-full bg-slate-900 text-white py-1.5 px-3 rounded-xl transition hover:bg-slate-800 disabled:opacity-30 disabled:bg-slate-700"
   >
     Submit
   </button>

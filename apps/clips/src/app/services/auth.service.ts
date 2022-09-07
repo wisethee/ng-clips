@@ -68,8 +68,6 @@ export class AuthService {
   async logout() {
     await this.auth.signOut();
 
-    if (this.redirect) {
-      await this.router.navigateByUrl('/');
-    }
+    await this.router.navigateByUrl('/');
   }
 }

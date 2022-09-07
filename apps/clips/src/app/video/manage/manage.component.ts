@@ -32,7 +32,11 @@ export class ManageComponent implements OnInit {
 
     this.clipService.getUserClips(this.sort$).subscribe((docs) => {
       this.clips = [];
-      docs.forEach((doc) => this.clips.push({ docId: doc.id, ...doc.data() }));
+      if (docs) {
+        docs.forEach((doc) =>
+          this.clips.push({ docId: doc.id, ...doc.data() })
+        );
+      }
     });
   }
 

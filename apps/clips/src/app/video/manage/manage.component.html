@@ -1,17 +1,23 @@
 <!-- Top Bar -->
-<section class="container mx-auto my-8 bg-secondary p-6">
+<section class="container mx-auto my-8 bg-slate-800 p-6 rounded-xl">
   <div class="rounded relative flex justify-between">
-    <a routerLink="/upload" class="bg-indigo-400 text-white py-4 px-10 text-xl"
+    <a
+      routerLink="/upload"
+      class="font-bold uppercase tracking-[.1rem] text-sm px-6 py-3 bg-slate-900 rounded-xl cursor-pointer"
       >Upload Videos</a
     >
 
     <!-- Sort Videos -->
     <select
       (change)="sort($event)"
-      class="text-black px-8 text-xl outline-none appearance-none"
+      class="outline-none appearance-none font-bold uppercase tracking-[.1rem] text-sm px-6 py-3 bg-slate-900 rounded-xl cursor-pointer"
     >
-      <option value="1" [selected]="videoOrder === '1'">Recent Uploads</option>
-      <option value="2" [selected]="videoOrder === '2'">Oldest Uploads</option>
+      <option value="1" [selected]="videoOrder === '1'">
+        Recent Uploads &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </option>
+      <option value="2" [selected]="videoOrder === '2'">
+        Oldest Uploads &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </option>
     </select>
   </div>
 </section>
@@ -22,45 +28,44 @@
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
     <div
       *ngFor="let clip of clips"
-      class="mt-6 rounded-tl-2xl rounded-br-2xl shadow-xl bg-secondary flex flex-col justify-start"
+      class="mt-6 rounded-3xl shadow-xl bg-secondary flex flex-col justify-start relative"
     >
       <!-- Image -->
-      <a [routerLink]="['/', 'clip', clip.docId]">
+      <a [routerLink]="['/', 'clip', clip.docId]" class="shadow-xl rounded-3xl">
         <img
-          class="card-img-top rounded-tl-2xl w-full"
+          class="card-img-top rounded-3xl w-full"
           [src]="clip.screenshotUrl"
           crossorigin
         />
+        <div
+          class="absolute top-0 right-0 bottom-0 left-0 rounded-3xl bg-gradient-to-r from-slate-900"
+        ></div>
+
+        <div
+          class="p-8 absolute top-0 right-0 bottom-0 left-0 rounded-3xl flex flex-col justify-end"
+        >
+          <!-- Heading -->
+          <h2 class="text-3xl font-bold mb-4 tracking-[.1rem]">
+            {{ clip.title | titlecase }}
+          </h2>
+        </div>
       </a>
 
-      <!-- Body -->
-      <div class="p-6 text-2xl">
-        <!-- Link -->
-        <a [routerLink]="['/', 'clip', clip.docId]" class="font-bold mb-2">
-          {{ clip.title }}
-        </a>
-        <a
-          href="#"
-          (click)="copyToClipboard($event, clip.docId)"
-          class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded"
-        >
-          Copy Link
-        </a>
-      </div>
-
       <!-- Actions -->
-      <div class="flex text-center text-2xl bg-gray-800 p-2 mt-auto">
+      <div
+        class="flex text-center text-2xl bg-slate-900 p-2 mt-auto absolute top-4 right-4 rounded-3xl"
+      >
         <a
           (click)="openModal($event, clip)"
           href="#"
-          class="flex-1 p-2 border-right border-r-2 border-gray-700 transition hover:text-indigo-400"
+          class="flex-1 p-2 pr-3 border-right border-r-2 border-slate-800 transition hover:text-indigo-400"
         >
           <span class="material-icons text-base">build</span>
         </a>
         <a
           href="#"
           (click)="deleteClip($event, clip)"
-          class="flex-1 p-2 rounded-br-2xl transition hover:text-indigo-400"
+          class="flex-1 p-2 pl-3 transition hover:text-indigo-400"
         >
           <span class="material-icons text-base">delete</span>
         </a>
