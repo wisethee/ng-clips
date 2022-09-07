@@ -1,73 +1,75 @@
-<!-- Header -->
-<header id="header" class="bg-secondary">
-  <nav class="container mx-auto flex justify-start items-center py-8 px-4">
-    <!-- App Name -->
-    <a class="text-3xl text-indigo-400 font-bold uppercase mr-4" routerLink="/"
-      >Clips</a
-    >
+<nav class="container mx-auto flex justify-start items-center py-8 px-4">
+  <!-- App Name -->
+  <a
+    class="text-3xl text-slate-200 font-bold uppercase mr-4 tracking-[.2rem]"
+    routerLink="/"
+  >
+    Clips
+  </a>
 
-    <div class="flex flex-grow items-center justify-end">
-      <!-- Primary Navigation -->
-      <ul class="flex flex-row mt-1">
-        <!-- Navigation Links -->
-        <li>
-          <a
-            class="px-4"
-            routerLink="/"
-            routerLinkActive="text-indigo-400"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            class="pr-12"
-            routerLink="/about"
-            routerLinkActive="text-indigo-400"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >About</a
-          >
-        </li>
-
-        <li
-          *ngIf="
-            (authService.isAuthenticated$ | async) !== true;
-            else authLinks
-          "
+  <div class="flex flex-grow items-center justify-end">
+    <!-- Primary Navigation -->
+    <ul class="flex flex-row mt-1">
+      <!-- Navigation Links -->
+      <li>
+        <a
+          class="font-bold uppercase mr-4 tracking-[.1rem] text-sm"
+          routerLink="/"
+          routerLinkActive="text-indigo-400"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
         >
-          <a class="px-2" href="#" (click)="openModal()">Login / Register</a>
-        </li>
+      </li>
+      <li>
+        <a
+          class="font-bold uppercase mr-4 tracking-[.1rem] text-sm pr-12"
+          routerLink="/about"
+          routerLinkActive="text-indigo-400"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >About</a
+        >
+      </li>
 
-        <ng-template #authLinks>
-          <li>
-            <a
-              class="px-2"
-              routerLink="/manage"
-              routerLinkActive="text-indigo-400"
-              [routerLinkActiveOptions]="{ exact: true }"
-              [queryParams]="{ sort: '1' }"
-              >Manage</a
-            >
-          </li>
-          <li>
-            <a
-              class="px-2"
-              routerLink="/upload"
-              routerLinkActive="text-indigo-400"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Upload</a
-            >
-          </li>
-          <li>
-            <a
-              class="px-2 cursor-pointer"
-              routerLinkActive="text-indigo-400"
-              (click)="logout()"
-              >Sign out</a
-            >
-          </li>
-        </ng-template>
-      </ul>
-    </div>
-  </nav>
-</header>
+      <li
+        *ngIf="(authService.isAuthenticated$ | async) !== true; else authLinks"
+      >
+        <a
+          class="font-bold uppercase tracking-[.1rem] text-sm px-6 py-3 bg-slate-700 rounded-xl"
+          href="#"
+          (click)="openModal()"
+          >Login / Register</a
+        >
+      </li>
+
+      <ng-template #authLinks>
+        <li>
+          <a
+            class="font-bold uppercase mr-4 tracking-[.1rem] text-sm"
+            routerLink="/manage"
+            routerLinkActive="text-indigo-400"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [queryParams]="{ sort: '1' }"
+            >Manage</a
+          >
+        </li>
+        <li>
+          <a
+            class="font-bold uppercase mr-4 tracking-[.1rem] text-sm"
+            routerLink="/upload"
+            routerLinkActive="text-indigo-400"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Upload</a
+          >
+        </li>
+        <li>
+          <a
+            class="font-bold uppercase tracking-[.1rem] text-sm px-6 py-3 bg-slate-700 rounded-xl cursor-pointer"
+            routerLinkActive="text-indigo-400"
+            (click)="logout()"
+            >Sign out</a
+          >
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+</nav>

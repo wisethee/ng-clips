@@ -7,7 +7,7 @@
 
 // Global Styles and animations
 body {
-  background-color: #161d31;
+  background-color: #0f172a;
 }
 
 .material-icons.text-base {
@@ -62,18 +62,6 @@ body {
   animation-delay: 9s;
   left: 50%;
   top: 10%;
-}
-
-.latest {
-  grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 20px 0;
-}
-
-.latest:after,
-.latest:before {
-  content: ' ';
-  display: block;
-  border-bottom: 3px solid #fff;
 }
 
 .ghost {

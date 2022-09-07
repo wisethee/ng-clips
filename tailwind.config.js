@@ -1,9 +1,14 @@
-/** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: ['./apps/clips/src/**/*.{html,ts}'],
   safelist: ['bg-blue-400', 'bg-red-400', 'bg-green-400'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Barlow', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   corePlugins: {
     aspectRatio: true,
