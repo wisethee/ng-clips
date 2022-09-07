@@ -28,7 +28,7 @@ export class FfmpegService {
     const data = await fetchFile(file);
     this.ffmpeg.FS('writeFile', file.name, data);
 
-    const seconds = [3, 6, 15];
+    const seconds = [3, 6, 9];
     const commands: string[] = [];
     const screenshots: string[] = [];
 
