@@ -2,7 +2,7 @@
 
 Minimal video sharing app build in Angular
 
-[:link: Demo](https://ng-clips-marius-paduraru.vercel.app/)
+:link: [Demo](https://ng-clips-marius-paduraru.vercel.app/)
 
 ## Installation
 
